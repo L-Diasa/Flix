@@ -11,5 +11,6 @@ import Foundation
 struct Movie {
     let title: String
     let synopsis: String
-    let imageURL: String
+    let posterURL: String
+    let backdropURL: String
 }
