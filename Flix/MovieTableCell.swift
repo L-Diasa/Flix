@@ -28,5 +28,4 @@ class MovieTableCell: UITableViewCell {
         let posterUrl = URL(string: "https://image.tmdb.org/t/p/w185" + movie.posterURL)!
         posterView.af.setImage(withURL: posterUrl)
     }
-
 }

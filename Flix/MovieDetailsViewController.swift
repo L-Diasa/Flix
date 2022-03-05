@@ -27,17 +27,23 @@ class MovieDetailsViewController: UIViewController {
         posterView.af.setImage(withURL: posterUrl)
         let backdropURL = URL(string: "https://image.tmdb.org/t/p/w780" + movie.backdropURL)!
         backdropView.af.setImage(withURL: backdropURL)
+        
+        // Define didTap methd
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTap(sender:)))
+
+        // Attach it to posterView
+        posterView.isUserInteractionEnabled = true
+        posterView.addGestureRecognizer(tapGestureRecognizer)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @objc func didTap(sender: UITapGestureRecognizer) {
+        // Show trailer screen
+        performSegue(withIdentifier : "showTrailer", sender: nil)
     }
-    */
-
+        
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Pass movie id to the trailer view controller
+        let trailerViewController = segue.destination as! MovieTrailerViewController
+        trailerViewController.id = movie.id
+    }
 }

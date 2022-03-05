@@ -13,4 +13,5 @@ struct Movie {
     let synopsis: String
     let posterURL: String
     let backdropURL: String
+    let id: Int
 }
